@@ -1,0 +1,219 @@
+src/App.jsx
+/* =====================
+   GLOBAL RESET
+===================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* KILLS side gaps */
+  scroll-behavior: smooth;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background: rgb(0, 0, 0);
+  color: white;
+}
+
+/* =====================
+   HERO – FULL BLEED
+===================== */
+.hero {
+  width: 100vw;
+  min-height: 100vh;
+      background-image: url("/cleaningsite.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+.hero-btn {
+  color: white;
+  border: 1px solid white;
+  padding: 12px 24px;
+  text-decoration: none;
+  width: fit-content;
+  font-weight: 600;
+}
+
+.hero-btn:hover {
+  background: white;
+  color: black;
+}
+
+/* =====================
+   ABOUT – SPLIT IMAGE / TEXT
+===================== */
+.about {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+
+}
+
+
+/* Text side */
+.about-content {
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  background: rgb(0, 0, 0);
+}
+
+.about-content h2 {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+  width: fit-content;
+  padding-bottom: 8px;
+}
+
+.about-content p {
+  line-height: 1.7;
+  max-width: 100px;
+  opacity: 0.9;
+}
+
+/* =====================
+   REQUEST SECTION
+===================== */
+.request {
+  width: 100vw;
+  padding: 100px 20px;
+  background: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.request h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.request .subtext {
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.request form {
+  border: 1px solid white;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.request input,
+.request textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid white;
+  padding: 12px;
+  margin-bottom: 16px;
+  color: white;
+}
+
+
+.request input::placeholder,
+.request textarea::placeholder {
+  color: rgb(185, 185, 185);
+}
+
+.request button {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font-weight: 600;
+}
+
+.request button:hover {
+  background: white;
+  color: black;
+}
+
+/* =====================
+   FADE-IN ON SCROLL
+===================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================
+   FOOTER
+===================== */
+.footer {
+  padding: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+/* =====================
+   MOBILE FIXES
+===================== */
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image {
+    min-height: 300px;
+  }
+
+  .about-content {
+    padding: 40px 24px;
+  }
+
+  .hero-overlay {
+    align-items: center;
+    text-align: center;
+  }
+
+  
+}
