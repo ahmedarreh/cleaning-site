@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import RequestForm from "./RequestForm";
-import logo from "./assets/Germinator.jpg";
+import logo from "./assets/germinator.jpg";
 import heroBg from "./assets/cleaningsite.jpg";
 import "./App.css";
 
