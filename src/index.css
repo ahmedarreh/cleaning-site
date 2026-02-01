@@ -1,219 +1,269 @@
-src/App.jsx
-/* =====================
-   GLOBAL RESET
-===================== */
+:root {
+  --text: #0f172a;
+  --muted: rgba(15, 23, 42, 0.72);
+  --border: rgba(226, 232, 240, 0.9);
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --card: rgba(255, 255, 255, 0.90);
+}
+
+/* RESET */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html, body {
+html, body, #root {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* KILLS side gaps */
-  scroll-behavior: smooth;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background: rgb(0, 0, 0);
-  color: white;
+  min-height: 100%;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
 }
 
-/* =====================
-   HERO – FULL BLEED
-===================== */
-.hero {
-  width: 100vw;
+a { color: inherit; }
+img { display: block; max-width: 100%; height: auto; }
+
+
+/* APP */
+.app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+} 
+.app > * {
+  position: relative;
+  z-index: 1;
+}
+.app {
   min-height: 100vh;
-      background-image: url("/cleaningsite.jpg");
+  background:
+    radial-gradient(600px 400px at 10% 20%, #dbeafe 0%, transparent 60%),
+    radial-gradient(500px 300px at 90% 30%, #e0f2fe 0%, transparent 60%),
+    radial-gradient(400px 300px at 30% 80%, #fef3c7 0%, transparent 60%),
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 78px;
+
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 24px;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap !important;
+}
+
+.brand {
+ display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+
+}
+
+.nav-logo {
+  height: 58px;          /* BIGGER LOGO */
+  border-radius: 14px;
+}
+
+.brand-name {
+   display: inline-block !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: rgba(15, 23, 42, 0.9);
+}
+
+.nav-btn {
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: #fff !important;
+  box-shadow: 0 10px 26px rgba(37, 99, 235, 0.20);
+}
+
+.nav-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* HERO (full image background) */
+.hero {
+  height: 100vh;
+  width: 100%;
   background-size: cover;
   background-position: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  /* push below navbar */
+  padding-top: 78px;
 }
 
-.hero::before {
-  content: "";
+/* Dark overlay like the screenshot (for readable text) */
+.hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.45);
 }
 
-.hero-overlay {
+/* Hero content */
+.hero-content {
   position: relative;
   z-index: 1;
-  height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+  text-align: center;
+  padding: 0 22px;
+  max-width: 900px;
+  color: white;
+}
+
+.hero-kicker {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin: 0 0 18px 0;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.4rem, 5.4vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px 0;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  opacity: 0.9;
+  margin: 0 0 26px 0;
+}
+
+/* Hero buttons */
+.hero-actions {
   display: flex;
-  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  transform: translateY(-1px);
+}
+
+/* SECTIONS */
+.section {
+  padding: 90px 20px;
+  display: flex;
   justify-content: center;
 }
 
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  margin-bottom: 24px;
-}
-
-.hero-btn {
-  color: white;
-  border: 1px solid white;
-  padding: 12px 24px;
-  text-decoration: none;
-  width: fit-content;
-  font-weight: 600;
-}
-
-.hero-btn:hover {
-  background: white;
-  color: black;
-}
-
-/* =====================
-   ABOUT – SPLIT IMAGE / TEXT
-===================== */
-.about {
-  width: 100vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
-
-}
-
-
-/* Text side */
-.about-content {
-  padding: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  background: rgb(0, 0, 0);
-}
-
-.about-content h2 {
-  font-size: 5rem;
-  margin-bottom: 20px;
-  border-bottom: 1px solid white;
-  width: fit-content;
-  padding-bottom: 8px;
-}
-
-.about-content p {
-  line-height: 1.7;
-  max-width: 100px;
-  opacity: 0.9;
-}
-
-/* =====================
-   REQUEST SECTION
-===================== */
-.request {
-  width: 100vw;
-  padding: 100px 20px;
-  background: rgb(0, 0, 0);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.request h2 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-}
-
-.request .subtext {
-  opacity: 0.7;
-  margin-bottom: 30px;
-}
-
-.request form {
-  border: 1px solid white;
-  padding: 40px;
-  max-width: 500px;
+.container {
   width: 100%;
+  max-width: 1000px;
 }
 
-.request input,
-.request textarea {
-  width: 100%;
-  background: transparent;
-  border: 1px solid white;
-  padding: 12px;
-  margin-bottom: 16px;
-  color: white;
+/* CARDS */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 60px 32px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.10);
 }
 
-
-.request input::placeholder,
-.request textarea::placeholder {
-  color: rgb(185, 185, 185);
-}
-
-.request button {
-  width: 100%;
-  padding: 14px;
-  background: transparent;
-  border: 1px solid white;
-  color: white;
-  font-weight: 600;
-}
-
-.request button:hover {
-  background: white;
-  color: black;
-}
-
-/* =====================
-   FADE-IN ON SCROLL
-===================== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =====================
-   FOOTER
-===================== */
-.footer {
-  padding: 30px;
+.card h2 {
   text-align: center;
-  font-size: 0.9rem;
-  opacity: 0.6;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
 }
 
-/* =====================
-   MOBILE FIXES
-===================== */
-@media (max-width: 900px) {
-  .about {
-    grid-template-columns: 1fr;
-  }
+.muted {
+  color: var(--muted);
+  line-height: 1.75;
+  text-align: center;
+}
 
-  .about-image {
-    min-height: 300px;
-  }
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 22px;
+  color: rgba(15, 23, 42, 0.7);
+  background: rgba(255,255,255,0.55);
+  border-top: 1px solid var(--border);
+}
 
-  .about-content {
-    padding: 40px 24px;
-  }
+/* Mobile */
+@media (max-width: 720px) {
+  .brand-name { display: none; } /* optional: hide text on small screens */
+  .nav-logo { height: 52px; }
 
-  .hero-overlay {
-    align-items: center;
-    text-align: center;
+  .card {
+    padding: 42px 20px;
   }
-
-  
 }
