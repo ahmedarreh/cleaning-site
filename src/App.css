@@ -300,9 +300,39 @@ img { display: block; max-width: 100%; height: auto; }
   .brand-name { display: none; }
   .nav-logo { height: 52px; }
 
+  /* ✅ FIX navbar overlap on mobile */
+  .nav-inner{
+    padding: 0 14px;     /* a bit tighter */
+    flex-wrap: wrap;     /* allow wrapping instead of overlapping */
+    gap: 10px;
+    justify-content: center;  /* center on mobile */
+  }
+
+  .brand{
+    justify-content: center;
+    width: 100%;         /* put brand on its own line */
+  }
+
+  .nav-links{
+    width: 100%;         /* put links on their own line */
+    justify-content: center;
+    flex-wrap: wrap;     /* links can wrap nicely */
+    gap: 12px;
+  }
+
+  .nav-links a{
+    font-size: 0.9rem;
+  }
+
+  .nav-btn{
+    padding: 10px 14px;
+  }
+
   .card {
     padding: 42px 20px;
   }
+
+
 
  /* ===== RequestForm (clean, centered) ===== */
 
